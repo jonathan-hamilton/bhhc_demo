@@ -1,0 +1,79 @@
+CONTROLLER METHODS	
+	
+	// Find one reason by id
+//	@GetMapping(value="/reason/{id}")
+//	public ReasonModel getReason(@PathVariable Long id) {
+//		return reasonService.getReason(id);
+//	}
+	
+	// Add reason with RequestBody
+//	@PostMapping(value="/addReason")
+//	public void addReason(@RequestBody ReasonModel reason, Model model) {
+//		model.addAttribute("reason", new ReasonModel());
+//		reasonService.addReason();
+//	}
+
+	// Add reason with ModelAttribute
+//	@PostMapping(value="/addReason")
+//	public ModelAndView addReason(@Valid @ModelAttribute("reason") ReasonModel reason, BindingResult result) {
+//		
+//		if(result.hasErrors()) {
+//			ModelAndView mv = new ModelAndView("index");
+//			System.out.println("There was an error adding Reason");
+//			return mv;
+//		}
+//		else {
+//			ModelAndView mv = new ModelAndView("index");
+//			System.out.println("Successfully added Reason");
+//			reasonService.addReason(reason);
+//			return mv;
+//		}
+//	}
+	
+	// Update reason by id
+//	@PutMapping(value="/updateReason/{id}")
+//	public void updateReason(@PathVariable Long id, @RequestBody ReasonModel reason) {
+//		
+//	}
+	
+	// Delete reason by id
+//	@DeleteMapping(value="/deleteReason/{id}")
+//	public void deleteReason(@PathVariable Long id) {
+//		reasonService.deleteBook(id);
+//	}
+
+
+SERVICE METHODS
+
+//	public ReasonModel getReason(Long id) {
+//		return reasonRepository.findById(id).orElseGet(ReasonModel::new);
+//	}
+	
+	public void addReason(ReasonModel reason) {
+		reasonRepository.save(reason);
+	}
+	
+//	public void updateReason(Long id, ReasonModel reason) {
+//		reasonRepository.save(reason);
+//	}
+//	
+//	public void deleteBook(Long id) {
+//		reasonRepository.deleteById(id);
+
+INDEX ADD REASON FORM DIV
+
+<!-- Div to add reason -->
+<!-- 				<div id="addReasonDiv"> -->
+<%-- 					<form:form method="post" modelAttribute="reason" action="addReason"> --%>
+<!-- 						<table> -->
+<!-- 							<tr> -->
+<!-- 								<td> -->
+<%-- 									<form:input type="text" name="reason" path="reason" /> --%>
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<input type="SUBMIT" class="btn" value="Add Reason" /> -->
+<!-- 								</td> -->
+<!-- 							</tr> -->
+<!-- 						</table> -->
+<%-- 					</form:form> --%>
+<!-- 				</div>	 -->
