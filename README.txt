@@ -12,7 +12,7 @@ Tech/Framework used:
 Spring Boot, JPA, Hibernate, h2 database with a jQuery front-end.
 
 Installation:
-Download from github and import as a Maven project to run.
+Download from github and import as a Maven project then run as a Spring Boot app.
 
 Features:
 A single page application that lists different reasons I would like to work at BHHC. The reasons
