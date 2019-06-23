@@ -24,7 +24,7 @@
 						   "This is an alert box. " +
 						"</div>"
 				);
-				$( '.alert' ).text(reasons[0][index + 1].reason);
+				$( '.alert' ).text(reasons[index + 1].reason);
 				$( '#button' ).css({
 					"visibility": "hidden"
 				});
@@ -36,9 +36,7 @@
 		
 			// Initialization of widgets once document is ready for scripting
 			$(document).ready(function(){
-		
-				
-				
+						
 				$( "#accordion" ).accordion();
 				$( "#button" ).button();
 				$( "#button-icon" ).button({
@@ -59,10 +57,10 @@
 				// menu select event will cause a check for the menu items text with the reasons array
 				// and alert with the appropriate reason
 					select: function(event, ui){
-						for(var i=0; i<reasons[0].length; i++){
+						for(var i=0; i<reasons.length; i++){
 							
-							if((ui.item.text()).substring(0,30) == (reasons[0][i].reason).substring(0,30)){
-								alert(reasons[0][i].reason);
+							if((ui.item.text()).substring(0,30) == (reasons[i].reason).substring(0,30)){
+								alert(reasons[i].reason);
 								
 							}
 						}
@@ -77,7 +75,7 @@
 						success: function(result){
 							
 							// push to local array
-							reasons.push(result);
+							reasons = result;
 							
 							$( '.reason ').each(function(idx){
 								var reason = result[idx].reason;
