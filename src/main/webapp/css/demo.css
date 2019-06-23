@@ -24,6 +24,16 @@
 	margin-top: 20px;
 }
 
+#menu{
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h2#menuH2{
+	text-align: center;
+}
+
 .alert {
   padding: 20px;
   background-color: #f44336; /* Red */

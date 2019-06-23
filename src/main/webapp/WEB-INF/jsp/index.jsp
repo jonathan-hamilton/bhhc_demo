@@ -11,7 +11,10 @@
 		<%@include file="headerLinksAndScripts.jsp" %>
 		
 		<script>
-		
+			// local array so only one db call is needed
+			var reasons = [];
+			var index;
+			
 			// Button that displays alert div
 			function buttonPress(){
 
@@ -21,7 +24,7 @@
 						   "This is an alert box. " +
 						"</div>"
 				);
-				$( '.alert' ).text(reasons[index + 1].reason);
+				$( '.alert' ).text(reasons[0][index + 1].reason);
 				$( '#button' ).css({
 					"visibility": "hidden"
 				});
@@ -33,6 +36,8 @@
 		
 			// Initialization of widgets once document is ready for scripting
 			$(document).ready(function(){
+		
+				
 				
 				$( "#accordion" ).accordion();
 				$( "#button" ).button();
@@ -50,17 +55,42 @@
 					}
 				});
 				
-				$( "#menu" ).menu();							
+				$( "#menu" ).menu({
+				// menu select event will cause a check for the menu items text with the reasons array
+				// and alert with the appropriate reason
+					select: function(event, ui){
+						for(var i=0; i<reasons[0].length; i++){
+							
+							if((ui.item.text()).substring(0,30) == (reasons[0][i].reason).substring(0,30)){
+								alert(reasons[0][i].reason);
+								
+							}
+						}
+					}
+				});							
 				
 				// function to retrieve reasons from db and insert them into the widgets
 				function getReasons(){
 					$.ajax({
 						url:'/reasons',
 						type: 'GET',
-						success: function(result){					
+						success: function(result){
+							
+							// push to local array
+							reasons.push(result);
+							
 							$( '.reason ').each(function(idx){
-								$(this).text(result[idx].reason);
-							});				
+								var reason = result[idx].reason;
+								$(this).text(reason);
+								index = idx;
+								
+							});	
+							$( '.menuReason' ).each(function(idx){
+								var reason = result[index + 1].reason;
+								var prefix = reason.substring(0, 30);
+								$(this).text(prefix + '...');
+								index++;
+							});
 						},
 						error: function(result){
 							console.log("error")
@@ -116,15 +146,14 @@
 				</div>
 						
 				<!-- Menu -->
-				<h2 class="demoHeaders">Menu</h2>
+				<h2 class="demoHeaders" id="menuH2">Menu</h2>
 				<ul id="menu">
-					<li><div class="reason">Item 1</div></li>
-					<li><div class="reason">Item 2</div></li>
-					<li><div class="reason">Item 3</div></li>					
-					<li><div class="reason">Item 4</div></li>					
-					<li><div class="reason">Item 5</div></li>					
-					<li><div class="reason">Item 6</div></li>					
-					<li><div class="reason">Item 7</div></li>					
+					<li><div class="menuReason">Item 1</div></li>
+					<li><div class="menuReason">Item 2</div></li>
+					<li><div class="menuReason">Item 3</div></li>					
+					<li><div class="menuReason">Item 4</div></li>					
+					<li><div class="menuReason">Item 5</div></li>					
+					<li><div class="menuReason">Item 6</div></li>									
 				</ul>
 			</div>
 		</div>

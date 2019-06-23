@@ -20,7 +20,7 @@ INSERT INTO REASONS (id, reason) VALUES
 ('7', 'Glassdoor.com says "a good work/life balance"');
 
 INSERT INTO REASONS (id, reason) VALUES 
-('8', 'I would like to program in C#');
+('8', 'I would like to learn new technologies and program in C#');
 
 INSERT INTO REASONS (id, reason) VALUES 
 ('9', '"Fantastic growth and advancement opportunities"');
